@@ -26,11 +26,11 @@ componentDidMount() {
   return (
           <div className="App">
           <NavBar />
-             <h1>Sprint Challenge</h1>
+            <div className="Player-List">
            {this.state.data.map(players => {
              return <PlayerList key={players.id} players={players}/>
            })}
-          
+          </div>
           </div>
   );
     };
