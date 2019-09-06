@@ -5,6 +5,7 @@ import PlayerList from './components/playerlist.js';
 import './App.css';
 
 class App extends React.Component{
+  _isMounted = false;
   constructor(){
     super();
   this.state = {
@@ -13,13 +14,24 @@ class App extends React.Component{
     } 
 
 componentDidMount() {
+  this._isMounted = true;
    axios.get('http://localhost:5000/api/players')
-  //  .then(res => res.json())
+
    .then(data => {
-   console.log('Player data',data); this.setState({data: data.data})})
+     if(this._isMounted){
+    this.setState({
+      data: data.data})
    .catch(err => console.log('nope'));
 };
+     })
+     };
+    
+    
 
+
+componentWillUnmount() {
+  this._isMounted = false;
+}
 
     render() {
       console.log(this.state.data);
