@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import NavBar from './components/navBar';
 import PlayerList from './components/playerlist.js';
 import './App.css';
 
@@ -24,8 +25,8 @@ componentDidMount() {
       console.log(this.state.data);
   return (
           <div className="App">
+          <NavBar />
              <h1>Sprint Challenge</h1>
-          
            {this.state.data.map(players => {
              return <PlayerList key={players.id} players={players}/>
            })}
